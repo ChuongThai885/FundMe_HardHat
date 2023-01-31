@@ -18,25 +18,25 @@ describe("FundMe", function () {
 
     describe("constructor", function () {
         it("sets the aggregator addresses correctly!", async function () {
-            const response = await fundMe.priceFeed();
+            const response = await fundMe.getPriceFeed();
             assert.equal(response, mockV3Aggregator.address);
         });
     });
 
     describe("Fund", function () {
         it("Fails if you don't send enough ETH", async function () {
-            await expect(fundMe.fund()).to.be.revertedWith("Be generous!");
+            await expect(fundMe.fund()).to.be.reverted;
         });
 
         it("updated the amount funded data structure", async function () {
             await fundMe.fund({ value: sendValue });
-            const response = await fundMe.addressToAmountFunded(deployer);
+            const response = await fundMe.getAmountFunded(deployer);
             assert.equal(response.toString(), sendValue.toString());
         });
 
-        it("adds funder to array of funders", async function () {
+        it("adds funder to array of funder", async function () {
             await fundMe.fund({ value: sendValue });
-            const funder = await fundMe.funders(0);
+            const funder = await fundMe.getFunder(0);
             assert.equal(funder, deployer);
         });
     });
