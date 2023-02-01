@@ -34,8 +34,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     ) {
         await verify(FundMe.address, [ethUsdPriceFeedAddress]);
     }
-    log(FundMe.i_owner);
-    log("-----------------------");
+    log("---------------------------------------");
 };
 
 module.exports.tags = ["all", "fundme"];
