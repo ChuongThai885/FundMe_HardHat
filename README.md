@@ -8,6 +8,6 @@ Try running some of the following tasks:
 yarn hardhat help
 yarn hardhat test
 yarn hardhat node
-yarn hardhat run scripts/fund.js
-yarn hardhat run scripts/withdraw.js
+yarn hardhat run scripts/fund.js --network localhost
+yarn hardhat run scripts/withdraw.js --network localhost
 ```
